@@ -1,3 +1,5 @@
+require 'aws-sdk'
+
 module Capistrano
   module OpsWorks
     class Connection
