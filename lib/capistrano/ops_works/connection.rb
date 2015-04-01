@@ -73,6 +73,7 @@ module Capistrano
         command     = args.fetch(:command)
         comment     = args.fetch(:comment, "")
         custom_json = args.fetch(:custom_json, "")
+        instance_ids = args.fetch(:instance_ids, "")
 
         client.create_deployment(\
           :stack_id => stack_id,
@@ -82,7 +83,8 @@ module Capistrano
             :args => command[:args]
           },
           :comment => comment,
-          :custom_json => custom_json
+          :custom_json => custom_json,
+          :instance_ids => instance_ids
         ).data[:deployment_id]
       end
 
