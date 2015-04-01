@@ -13,7 +13,8 @@ namespace :opsworks do
   def deployment_ids
     { 
       :stack_id => fetch(:stack_id),
-      :app_id => fetch(:app_id)
+      :app_id => fetch(:app_id),
+      :instance_ids => fetch(:instance_ids)
     }
   end
 
@@ -25,8 +26,7 @@ namespace :opsworks do
         :args => command_args
       },
       :comment => 'Capistrano OpsWorks Deploy',
-      :custom_json => fetch(:opsworks_custom_json) || '',
-      :instance_ids => fetch(:instance_ids) || ''
+      :custom_json => fetch(:opsworks_custom_json) || ''
     }
     opts = ids.merge(deploy_opts)
 
