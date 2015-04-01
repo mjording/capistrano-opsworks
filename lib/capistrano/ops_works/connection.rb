@@ -1,5 +1,3 @@
-require 'aws/ops_works'
-
 module Capistrano
   module OpsWorks
     class Connection
