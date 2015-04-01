@@ -13,8 +13,7 @@ namespace :opsworks do
   def deployment_ids
     { 
       :stack_id => fetch(:stack_id),
-      :app_id => fetch(:app_id),
-      :instance_ids => fetch(:instance_ids)
+      :app_id => fetch(:app_id)
     }
   end
 

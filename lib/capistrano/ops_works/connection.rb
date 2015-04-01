@@ -70,7 +70,6 @@ module Capistrano
       def create_deployment args={}
         stack_id    = args.fetch(:stack_id)
         app_id      = args.fetch(:app_id)
-        instance_ids = args.fetch(:instance_ids)
         command     = args.fetch(:command)
         comment     = args.fetch(:comment, "")
         custom_json = args.fetch(:custom_json, "")
@@ -78,7 +77,6 @@ module Capistrano
         client.create_deployment(
           :stack_id => stack_id,
           :app_id => app_id,
-          :instance_ids => instance_ids,
           :command => {
             :name => command[:name],
             :args => command[:args]
