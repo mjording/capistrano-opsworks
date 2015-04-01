@@ -62,7 +62,7 @@ module Capistrano
       end
 
       def describe args={}
-        client.describe_apps(\
+        client.describe_apps(
           :stack_id => args.fetch(:stack_id)
         )
       end
@@ -75,16 +75,16 @@ module Capistrano
         custom_json = args.fetch(:custom_json, "")
         instance_ids = args.fetch(:instance_ids, "")
 
-        client.create_deployment(\
+        client.create_deployment(
           :stack_id => stack_id,
           :app_id => app_id,
+          :instance_ids => instance_ids,
           :command => {
             :name => command[:name],
             :args => command[:args]
           },
           :comment => comment,
-          :custom_json => custom_json,
-          :instance_ids => instance_ids
+          :custom_json => custom_json
         ).data[:deployment_id]
       end
 
