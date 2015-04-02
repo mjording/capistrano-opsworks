@@ -4,7 +4,7 @@ require 'capistrano/ops_works'
 namespace :opsworks do
 
   def opsworks
-    Capistrano::OpsWorks::Connection.new(\
+    Capistrano::OpsWorks::Connection.new(
       :access_key_id => fetch(:access_key_id),
       :secret_access_key => fetch(:secret_access_key)
     )
@@ -36,6 +36,9 @@ namespace :opsworks do
     puts start_deploy
   end
 
+
+
+
   desc "Add command arg migrate=true to deploy (Rails app specific?)"
   task :migrate do
     puts start_deploy({"migrate"=>["true"]})
@@ -54,6 +57,12 @@ namespace :opsworks do
 
   task :verify, :deployment_id do |task, args|
     puts opsworks.verify args[:deployment_id]
+  end
+
+  task :deeploy do
+    puts "app_id #{fetch(:app_id)} "
+    puts "access_key_id #{fetch(:access_key_id)} "
+    puts "instance_ids #{fetch(:instance_ids)} "
   end
 end
 
