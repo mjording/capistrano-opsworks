@@ -37,6 +37,12 @@ namespace :opsworks do
   end
 
 
+  desc "Displays debugging info"
+  task :deeploy do
+    puts "app_id #{fetch(:app_id)} "
+    puts "access_key_id #{fetch(:access_key_id)} "
+    puts "instance_ids #{fetch(:instance_ids)} "
+  end
 
 
   desc "Add command arg migrate=true to deploy (Rails app specific?)"
@@ -59,12 +65,8 @@ namespace :opsworks do
     puts opsworks.verify args[:deployment_id]
   end
 
-  task :deeploy do
-    puts "app_id #{fetch(:app_id)} "
-    puts "access_key_id #{fetch(:access_key_id)} "
-    puts "instance_ids #{fetch(:instance_ids)} "
-  end
 end
 
 desc "Deploy to opsworks"
 task :opsworks => ["opsworks:default"]
+
